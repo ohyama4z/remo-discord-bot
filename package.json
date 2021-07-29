@@ -37,6 +37,8 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.21.1",
     "discord.js": "^12.5.3"
   }
 }
