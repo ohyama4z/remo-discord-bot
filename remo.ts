@@ -10,10 +10,10 @@ const axios = axiosBase.create({
   }
 })
 
-interface AirconSettingData {
+export interface AirconSettingData {
   button: `on` | `off`,
-  temp?: 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29,
-  mode?: `強風` | `弱風` | `除湿` | `送風`
+  temp: `21` | `22` | `23` | `24` | `25` | `26` | `27` | `28` | `29` | null,
+  mode: `強風` | `弱風` | `除湿` | `送風` | null
 }
 const setAircon = async (data: AirconSettingData): Promise<void> => {
   let param = ``
