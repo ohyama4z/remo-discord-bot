@@ -78,9 +78,9 @@ client.on(`message`, message => {
       optionPairs = [...optionPairs, options.slice(i, i+2) as [string|undefined, string|undefined]];
     }
 
-    for(let optionPair of optionPairs) {
+    for (let optionPair of optionPairs) {
       if (optionPair[0] === `--temp` || optionPair[0] === `-t`) {
-        const tempRange = [`21`,`22`,`23`,`24`,`25`,`26`,`27`,`28`,`29`]
+        const tempRange = [`21`, `22`, `23`, `24`, `25`, `26`, `27`, `28`, `29`]
         if (optionPair[1] == null || !tempRange.includes(optionPair[1])) {
           message.channel.send(`${optionPair[0]} ${optionPair[1]}: オプションの値が不正です。ヘルプを確認してください`)
           message.channel.send(helpText)
@@ -88,6 +88,7 @@ client.on(`message`, message => {
         }
         
         settingPram.temp = optionPair[1] as AirconSettingData["temp"]
+        continue
       }
 
       if (optionPair[0] === `--mode` || optionPair[0] === `-m`) {
@@ -99,6 +100,7 @@ client.on(`message`, message => {
         }
         
         settingPram.mode = optionPair[1] as AirconSettingData["mode"]
+        continue
       }
 
       if (optionPair[0] != null) {
@@ -135,7 +137,7 @@ client.on(`message`, message => {
     #使い方
       !remo エアコン   :エアコンに関する操作を行います
       !remo 扇風機     :扇風機に関する操作を行います
-      !remo --help     :このヘルプを表示します\`\`\`
+      !remo help     :このヘルプを表示します\`\`\`
     `
   message.channel.send(helpText)
 })
