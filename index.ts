@@ -9,12 +9,12 @@ client.once(`ready`, () => {
   console.log(`準備完了`)
 })
 
-client.on(`message`, message => {
+client.on(`message`, async message => {
   if (!message.content.startsWith(`!remo`) || message.author.bot) {
     return
   }
 
-  type Commands = `エアコン` | `ac` | `扇風機` | `fan` | `help` | `ヘルプ`
+  type Commands = `エアコン` | `ac` | `help` | `ヘルプ`
   const [, command, ...args] = message.content.split(` `) as [undefined, Commands, ...(string | undefined)[]]
   
   if (command === `エアコン` || command === `ac`) {
@@ -26,7 +26,7 @@ client.on(`message`, message => {
 
     if (args == null) {
       try {
-        remo.setAircon(settingPram)
+        remo.aircon.setStatus(settingPram)
       } catch (e) {
         console.log(e)
         message.channel.send(e)
@@ -64,7 +64,8 @@ client.on(`message`, message => {
     }
 
     if (args[0] === `status`) {
-      message.channel.send(`未実装です...もうちょい待ってて...`)
+      const status = await remo.aircon.getStatus()
+      message.channel.send(JSON.stringify(status))
       return
     }
 
@@ -111,18 +112,13 @@ client.on(`message`, message => {
     }
     
     try {
-      remo.setAircon(settingPram)
+      remo.aircon.setStatus(settingPram)
     } catch (e) {
       console.log(e)
       message.channel.send(e)
     }
     console.log(settingPram)
     message.channel.send(`送信に成功しました`)
-    return
-  }
-
-  if (command === `扇風機` || command === `fan`) {
-    message.channel.send(`!remo ${command}: 未実装です...もうちょい待ってて...`)
     return
   }
 
@@ -136,7 +132,6 @@ client.on(`message`, message => {
 
     #使い方
       !remo エアコン   :エアコンに関する操作を行います
-      !remo 扇風機     :扇風機に関する操作を行います
       !remo help     :このヘルプを表示します\`\`\`
     `
   message.channel.send(helpText)
