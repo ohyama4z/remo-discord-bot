@@ -123,7 +123,7 @@ client.on(`message`, async message => {
   }
 
   if (command !== `help` && command !== `ヘルプ`) {
-    message.channel.send(`${command}: こんなコマンドはない`)
+    message.channel.send(`${command}: コマンドが不正です`)
   }
   
   const helpText =
