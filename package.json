@@ -19,10 +19,8 @@
   },
   "homepage": "https://github.com/ohyama4z/remo-discord-bot#readme",
   "devDependencies": {
-    "@types/node": "10.17.27",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
-    "dotenv": "^10.0.0",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-prettier-standard": "^4.0.1",
@@ -33,11 +31,13 @@
     "eslint-plugin-promise": "^4.3.1",
     "prettier": "2.2.1",
     "prettier-config-standard": "^4.0.0",
-    "prettier-standard": "^16.4.1",
-    "ts-node": "^9.0.0",
-    "typescript": "~3.9.7"
+    "prettier-standard": "^16.4.1"
   },
   "dependencies": {
+    "@types/node": "10.17.27",
+    "dotenv": "^10.0.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7",
     "@types/axios": "^0.14.0",
     "axios": "^0.21.1",
     "discord.js": "^12.5.3"
