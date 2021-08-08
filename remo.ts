@@ -73,8 +73,9 @@ const aircon: Readonly<Aircon> = {
     if (resMode === `cool`) {
       if (res.data.settings.vol === `1`) {
         mode = `弱風`
+      } else {
+        mode = `強風`
       }
-      mode = `強風`
     } else if (resMode === `dry`) {
       mode = `除湿`
     } else {
