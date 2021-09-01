@@ -3,5 +3,5 @@ services:
     app:
         build: "."
         volumes:
-            - ./:/app
+            - .env:/app/.env
         restart: always
