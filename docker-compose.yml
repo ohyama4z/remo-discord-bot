@@ -5,3 +5,16 @@ services:
         volumes:
             - .env:/app/.env
         restart: always
+    
+    portainer:
+        image: portainer/portainer-ce
+        volumes:
+            - portainer_data:/data
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /var/lib/docker/volumes:/var/lib/docker/volumes
+        ports:
+            - 9001:9001
+        restart: always
+
+volumes:
+    portainer_data:
