@@ -1,0 +1,19 @@
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on:
+      - self-hosted
+      - raspi
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          workDir="~/production/remo-discord-bot"
+          rsync --exclude=.git --exclude=.env --delete ./ "$workDir"
+          cd "$workDir"
+          docker-compose build
+          docker-compose up -d
